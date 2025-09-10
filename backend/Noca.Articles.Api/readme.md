@@ -11,6 +11,8 @@ Small ASP.NET Core backend for the Bicycles Article Management.
 dotnet run
 Health check: http://localhost:5000/ping
 API root: http://localhost:5000/api
+Swagger UI: http://localhost:5000/swagger
+Swagger Specs: http://localhost:5000/swagger/v1/swagger.json
 
 ## Endpoints
 Mapping is done via small transformation methods in `DTOs/ArticleMappings.cs`.
@@ -38,8 +40,6 @@ Using **FluentValidation** for Minimal APIs:
 
 ## API Documentation (Swagger / OpenAPI)
 Swagger is enabled to explore and test endpoints in the browser.
-- UI: http://url/swagger
-- Spec: http://url/swagger/v1/swagger.json
 
 
 ## These are stubs only. In later commits we will:
