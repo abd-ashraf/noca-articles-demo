@@ -12,11 +12,12 @@ dotnet run
 Health check: http://localhost:5000/ping
 API root: http://localhost:5000/api
 
-## Endpoints (scaffolded)
-- `GET /api/articles` — returns a test articles list for now
-- `GET /api/articles/{id}` — placeholder, always returns test article
-- `POST /api/articles` — placeholder, always returns 400
-- `PUT /api/articles/{id}` — placeholder, always returns 400
+## Endpoints
+Mapping is done via small transformation methods in `DTOs/ArticleMappings.cs`.
+- GET /api/articles        returns ArticleDTO[]
+- GET /api/articles/{id}   returns 200 with ArticleDTO or 404
+- POST /api/articles       creates an article from CreateArticleDTO, returns 201 with ArticleDTO
+- PUT /api/articles/{id}   updates fields from UpdateArticleDTO, returns 204 or 404
 
 ## Data Model (# This separation keeps API payloads lean.)
 - **Domain/Article.cs**: Full entity with all fields, including dimensions.
