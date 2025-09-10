@@ -31,7 +31,11 @@ This keeps `Program.cs` minimal and allows us to later swap the store for a real
 - **IArticleService.cs**: Interface abstraction for the service.
 - **ArticleService.cs**: Provides CRUD operations.
 
+## Validation
+Using **FluentValidation** for Minimal APIs:
+- Validators live in `Validators/*Validator.cs` and are registered via DI in Program.cs
+- Using ValidationHelper to enforce rules on incoming DTOs
+
 ## These are stubs only. In later commits we will:
-- Introduce an in-memory store with seeded data
 - Implement filtering, sorting, pagination
-- Add validation and persistence (optional EF Core + SQLite)
+- Add persistence (optional EF Core + SQLite)

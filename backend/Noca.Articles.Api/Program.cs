@@ -1,12 +1,18 @@
 using Noca.Articles.Api.Data;
 using Noca.Articles.Api.Services;
 using Noca.Articles.Api.DTOs;
+using Noca.Articles.Api.Helpers;
+using Noca.Articles.Api.Validators;
+using FluentValidation;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<ArticleStore>();
 builder.Services.AddSingleton<IArticleService, ArticleService>();
+
+// Add FluentValidation
+builder.Services.AddValidatorsFromAssemblyContaining<CreateArticleDTOValidator>();
 
 var app = builder.Build();
 
@@ -35,17 +41,30 @@ articles.MapGet("/{id:int}", (int id, IArticleService articleService) =>
 });
 
 // POST /api/articles - create new article
-articles.MapPost("/", (CreateArticleDTO dto, IArticleService articleService) =>
+articles.MapPost("/", (
+    CreateArticleDTO dto,
+    IValidator<CreateArticleDTO> validator,
+    IArticleService articleService) =>
 {
-    var created = articleService.Create(dto.ToDomain());
-    return Results.Created($"/api/articles/{created.Id}", created.ToDTO());
+    return ValidationHelper.ValidateAndExecute(dto, validator, validDto =>
+    {
+        var created = articleService.Create(validDto.ToDomain());
+        return Results.Created($"/api/articles/{created.Id}", created.ToDTO());
+    });
 });
 
 // PUT /api/articles/{id} - update article by id
-articles.MapPut("/{id:int}", (int id, UpdateArticleDTO dto, IArticleService articleService) =>
+articles.MapPut("/{id:int}", (
+    int id,
+    UpdateArticleDTO dto,
+    IValidator<UpdateArticleDTO> validator,
+    IArticleService articleService) =>
 {
-    var ok = articleService.Update(id, dto.ToDomain());
-    return ok ? Results.NoContent() : Results.NotFound();
+    return ValidationHelper.ValidateAndExecute(dto, validator, validDto =>
+    {
+        var ok = articleService.Update(id, validDto.ToDomain());
+        return ok ? Results.NoContent() : Results.NotFound();
+    });
 });
 // ----./Articles endpoints----
 
