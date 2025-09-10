@@ -14,7 +14,21 @@ builder.Services.AddSingleton<IArticleService, ArticleService>();
 // Add FluentValidation
 builder.Services.AddValidatorsFromAssemblyContaining<CreateArticleDTOValidator>();
 
+// --- Swagger services ---
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+// ------------------------
+
 var app = builder.Build();
+
+// --- Swagger middleware ---
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "NOCA Articles API");
+    c.RoutePrefix = "swagger";
+});
+// -------------------------
 
 // Simple health check endpoint
 app.MapGet("/ping", () => Results.Ok("Noca.Articles.Api is running..."));

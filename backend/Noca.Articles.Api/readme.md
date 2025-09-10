@@ -36,6 +36,12 @@ Using **FluentValidation** for Minimal APIs:
 - Validators live in `Validators/*Validator.cs` and are registered via DI in Program.cs
 - Using ValidationHelper to enforce rules on incoming DTOs
 
+## API Documentation (Swagger / OpenAPI)
+Swagger is enabled to explore and test endpoints in the browser.
+- UI: http://url/swagger
+- Spec: http://url/swagger/v1/swagger.json
+
+
 ## These are stubs only. In later commits we will:
 - Implement filtering, sorting, pagination
 - Add persistence (optional EF Core + SQLite)
