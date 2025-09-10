@@ -1,4 +1,11 @@
+using Noca.Articles.Api.Data;
+using Noca.Articles.Api.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<ArticleStore>();
+builder.Services.AddSingleton<IArticleService, ArticleService>();
+
 var app = builder.Build();
 
 // Simple health check endpoint

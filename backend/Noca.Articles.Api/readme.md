@@ -24,6 +24,12 @@ API root: http://localhost:5000/api
 - **DTOs/CreateArticleDTO.cs**: Used when creating a new article.
 - **DTOs/UpdateArticleDTO.cs**: Used when updating an existing article.
 
+## Data Layer
+This keeps `Program.cs` minimal and allows us to later swap the store for a real database (SQLite) with minimal changes.
+- **ArticleStore.cs**: In-memory list seeded with a few example articles.
+- **IArticleService.cs**: Interface abstraction for the service.
+- **ArticleService.cs**: Provides CRUD operations.
+
 ## These are stubs only. In later commits we will:
 - Introduce an in-memory store with seeded data
 - Implement filtering, sorting, pagination
