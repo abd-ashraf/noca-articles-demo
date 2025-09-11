@@ -1,4 +1,158 @@
-<div class="content">
-    <p>article-edit works!</p>
-        Edit article form goes here
-</div>
+<mat-toolbar color="primary">
+  <span>Edit Article</span>
+</mat-toolbar>
+
+@if (loading) {
+<mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+} @else {
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Article Number</mat-label>
+      <input matInput formControlName="articleNumber" />
+      @if (hasError('articleNumber','required')) {
+      <mat-error>Required</mat-error>
+      } @if (hasError('articleNumber','server')) {
+      <mat-error
+        >{{ form.controls.articleNumber.errors?.['server'] }}</mat-error
+      >
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+      @if (hasError('name','required')) {
+      <mat-error>Required</mat-error>
+      } @if (hasError('name','server')) {
+      <mat-error>{{ form.controls.name.errors?.['server'] }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Article Category</mat-label>
+      <mat-select formControlName="articleCategory">
+        @for (c of articleCategories; track c) {
+        <mat-option [value]="c">{{ c }}</mat-option>
+        }
+      </mat-select>
+      @if (hasError('articleCategory','required')) {
+      <mat-error>Required</mat-error>
+      } @if (hasError('articleCategory','server')) {
+      <mat-error
+        >{{ form.controls.articleCategory.errors?.['server'] }}</mat-error
+      >
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Bicycle Category</mat-label>
+      <mat-select formControlName="bicycleCategory" multiple>
+        @for (b of bicycleCategories; track b) {
+        <mat-option [value]="b">{{ b }}</mat-option>
+        }
+      </mat-select>
+      @if (hasError('bicycleCategory','required')) {
+      <mat-error>Required</mat-error>
+      } @if (hasError('bicycleCategory','server')) {
+      <mat-error
+        >{{ form.controls.bicycleCategory.errors?.['server'] }}</mat-error
+      >
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Material</mat-label>
+      <mat-select formControlName="material">
+        @for (m of materials; track m) {
+        <mat-option [value]="m">{{ m }}</mat-option>
+        }
+      </mat-select>
+      @if (hasError('material','required')) {
+      <mat-error>Required</mat-error>
+      } @if (hasError('material','server')) {
+      <mat-error>{{ form.controls.material.errors?.['server'] }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Net weight grams</mat-label>
+      <input matInput type="number" formControlName="netWeightGrams" />
+      @if (hasError('netWeightGrams','required')) {
+      <mat-error>Required</mat-error>
+      } @else if (hasError('netWeightGrams','min')) {
+      <mat-error>Must be >= 0</mat-error>
+      } @if (hasError('netWeightGrams','server')) {
+      <mat-error
+        >{{ form.controls.netWeightGrams.errors?.['server'] }}</mat-error
+      >
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Length mm</mat-label>
+      <input matInput type="number" formControlName="lengthMm" />
+      @if (hasError('lengthMm','required')) {
+      <mat-error>Required</mat-error>
+      } @else if (hasError('lengthMm','min')) {
+      <mat-error>Must be >= 0</mat-error>
+      } @if (hasError('lengthMm','server')) {
+      <mat-error>{{ form.controls.lengthMm.errors?.['server'] }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Width mm</mat-label>
+      <input matInput type="number" formControlName="widthMm" />
+      @if (hasError('widthMm','required')) {
+      <mat-error>Required</mat-error>
+      } @else if (hasError('widthMm','min')) {
+      <mat-error>Must be >= 0</mat-error>
+      } @if (hasError('widthMm','server')) {
+      <mat-error>{{ form.controls.widthMm.errors?.['server'] }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Height mm</mat-label>
+      <input matInput type="number" formControlName="heightMm" />
+      @if (hasError('heightMm','required')) {
+      <mat-error>Required</mat-error>
+      } @else if (hasError('heightMm','min')) {
+      <mat-error>Must be >= 0</mat-error>
+      } @if (hasError('heightMm','server')) {
+      <mat-error>{{ form.controls.heightMm.errors?.['server'] }}</mat-error>
+      }
+    </mat-form-field>
+  </div>
+
+  <!-- Server error summary -->
+  @if (serverErrors.length > 0) {
+  <div class="server-errors">
+    @for (e of serverErrors; track $index) {
+    <div>{{ e }}</div>
+    }
+  </div>
+  }
+
+  <div class="actions">
+    <button
+      mat-stroked-button
+      color="primary"
+      routerLink="/articles"
+      type="button"
+      [disabled]="submitting"
+    >
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit"
+      [disabled]="form.invalid || submitting"
+    >
+      Update
+    </button>
+  </div>
+</form>
+}

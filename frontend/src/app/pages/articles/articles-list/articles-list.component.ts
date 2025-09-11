@@ -9,7 +9,7 @@ import { Article } from '../../../models/article.model';
   styleUrl: './articles-list.component.scss',
 })
 export class ArticlesListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'articleNumber', 'name', 'articleCategory', 'material', 'netWeight', 'actions'];
+  displayedColumns: string[] = ['id', 'articleNumber', 'name', 'articleCategory', 'material', 'netWeightGrams', 'actions'];
   articles: Article[] = [];
   loading = true;
 

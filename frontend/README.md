@@ -51,6 +51,11 @@ src/app
   - Fetches data from backend via ArticlesService
   ## Create article
   - Reactive form with Material inputs and selects
+  ## Edit article
+  - Edit page loads existing article data into form
+  - On submit calls ArticlesService.update
+  - Shows success notification and navigates back to list
+
 
 ## These are stubs only In later commits we will
 - Add Articles pages with create edit

@@ -1,0 +1,21 @@
+.form {
+    padding: 16px;
+    max-width: 900px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.server-errors {
+    margin: 12px 0;
+    color: #b00020;
+}
