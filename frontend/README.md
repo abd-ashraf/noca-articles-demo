@@ -56,11 +56,13 @@ src/app
   - On submit calls ArticlesService.update
   - Shows success notification and navigates back to list
 
+## Filtering Articles
+- Implemented Client Side Filtering
+
+## Sorting
+- Enabled MatSort on articles table
 
 ## These are stubs only In later commits we will
-- Add Articles pages with create edit
-- Implement filtering UI with Material form controls
-- Implement ArticlesService for API calls
 - Implement pagination and sorting when backend supports it
 
 ## Running unit tests
