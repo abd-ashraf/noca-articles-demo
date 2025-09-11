@@ -20,12 +20,26 @@ src/app
   app.component.*
   shared
     material.module.ts
+    notification.service.ts
   core
     rest.service.ts
     error.interceptor.ts
   models
     article.model.ts
     article-filter.model.ts
+  services
+    articles.service.ts
+  pages/articles
+    articles.module.ts
+    articles-routing.module.ts
+    articles-list/
+      articles-list.component.*
+    article-create/
+      article-create.component.*
+    article-edit/
+      article-edit.component.*
+    articles-filter-bar/
+      articles-filter-bar.component.*
 
 ## Data model
 - Article full entity with all fields including dimensions
@@ -43,30 +57,28 @@ src/app
 - /articles/new create page
 - /articles/:id/edit edit page
 
-## FeatureModules
-  ## Article modules
+## Feature modules
+  ### Articles module
   - ArticlesModule is lazy loaded under /articles
-  ## Articles list
+  ### Articles list
   - Implemented list page with Angular Material table
   - Fetches data from backend via ArticlesService
-  ## Create article
+  - Supports client side filtering and sorting
+  ### Create article
   - Reactive form with Material inputs and selects
-  ## Edit article
+  - Shows validation errors and backend error messages
+  - On success shows snackbar and navigates back to list
+  ### Edit article
   - Edit page loads existing article data into form
   - On submit calls ArticlesService.update
-  - Shows success notification and navigates back to list
+  - Shows validation feedback and success notification
 
 ## Filtering Articles
-- Implemented Client Side Filtering
+- Implemented client side filtering with category, bicycle category and material
 
 ## Sorting
 - Enabled MatSort on articles table
+- Supports sorting by articleCategory and netWeightGrams
 
 ## These are stubs only In later commits we will
-- Implement pagination and sorting when backend supports it
-
-## Running unit tests
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-```bash
-ng test
-```
+- Implement pagination when backend supports it
