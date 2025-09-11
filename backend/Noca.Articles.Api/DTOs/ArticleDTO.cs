@@ -7,5 +7,8 @@ public record ArticleDTO(
     string ArticleCategory,
     List<string> BicycleCategory,
     string Material,
-    int NetWeightGrams
+    int NetWeightGrams,
+    int LengthMm,
+    int WidthMm,
+    int HeightMm
 );

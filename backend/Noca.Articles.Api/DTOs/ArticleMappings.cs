@@ -11,7 +11,10 @@ public static class ArticleMappings
         a.ArticleCategory,
         a.BicycleCategory,
         a.Material,
-        a.NetWeightGrams
+        a.NetWeightGrams,
+        a.LengthMm,
+        a.WidthMm,
+        a.HeightMm
     );
 
     public static Article ToDomain(this CreateArticleDTO dto) => new()
