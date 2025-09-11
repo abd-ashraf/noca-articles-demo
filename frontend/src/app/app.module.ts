@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { MaterialModule } from './shared/material/material.module';
+import { errorInterceptor } from './core/error.interceptor';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { MaterialModule } from './shared/material/material.module';
 
     MaterialModule,
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptors([errorInterceptor]))
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
