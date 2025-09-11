@@ -35,6 +35,11 @@ src/app
 - ArticleUpdateDto used when updating an existing article
 - ArticleFilter used in frontend for filtering
 
+## Services
+- ArticlesService handles CRUD operations for /api/articles
+- Uses RestService internally
+- Provides methods list getById create update delete
+
 ## These are stubs only In later commits we will
 - Add Articles pages list create edit
 - Implement filtering UI with Material form controls
