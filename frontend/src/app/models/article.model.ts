@@ -5,8 +5,10 @@ export interface Article {
   articleCategory: string;
   bicycleCategory: string[];
   material: string;
-  netWeight: number;
-  dimensions?: string;
+  netWeightGrams: number;
+  lengthMm: number;
+  widthMm: number;
+  heightMm: number;
 }
 
 export interface ArticleCreateDto {
@@ -15,8 +17,10 @@ export interface ArticleCreateDto {
   articleCategory: string;
   bicycleCategory: string[];
   material: string;
-  netWeight: number;
-  dimensions?: string;
+  netWeightGrams: number;
+  lengthMm: number;
+  widthMm: number;
+  heightMm: number;
 }
 
 export interface ArticleUpdateDto extends Partial<ArticleCreateDto> {}

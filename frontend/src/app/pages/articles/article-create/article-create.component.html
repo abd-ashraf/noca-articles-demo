@@ -1,4 +1,81 @@
-<div class="content">
-    <p>article-create works!</p>
-        Create article form goes here
-</div>
+<mat-toolbar color="primary">
+  <span>Create Article</span>
+</mat-toolbar>
+
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Article Number</mat-label>
+      <input matInput formControlName="articleNumber" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Article Category</mat-label>
+      <mat-select formControlName="articleCategory">
+        <mat-option *ngFor="let c of articleCategories" [value]="c">{{
+          c
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Bicycle Category</mat-label>
+      <mat-select formControlName="bicycleCategory" multiple>
+        <mat-option *ngFor="let b of bicycleCategories" [value]="b">{{
+          b
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Material</mat-label>
+      <mat-select formControlName="material">
+        <mat-option *ngFor="let m of materials" [value]="m">{{ m }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Net weight grams</mat-label>
+      <input matInput type="number" formControlName="netWeightGrams" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Length mm</mat-label>
+      <input matInput type="number" formControlName="lengthMm" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Width mm</mat-label>
+      <input matInput type="number" formControlName="widthMm" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Height mm</mat-label>
+      <input matInput type="number" formControlName="heightMm" />
+    </mat-form-field>
+  </div>
+
+  <div class="actions">
+    <button
+      mat-stroked-button
+      color="primary"
+      routerLink="/articles"
+      type="button"
+    >
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit"
+      [disabled]="form.invalid || submitting"
+    >
+      Create
+    </button>
+  </div>
+</form>

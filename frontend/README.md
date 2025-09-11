@@ -8,12 +8,10 @@
 
 ## Development server
 To start a local development server, run:
-
 ```bash
 npm install
 ng serve
 ```
-
 App runs on http://localhost:4200
 
 ## Folder structure
@@ -45,12 +43,14 @@ src/app
 - /articles/new create page
 - /articles/:id/edit edit page
 
-## Feature modules
-- ArticlesModule is lazy loaded under /articles
-
-## Articles list
-- Implemented list page with Angular Material table
-- Fetches data from backend via ArticlesService
+## FeatureModules
+  ## Article modules
+  - ArticlesModule is lazy loaded under /articles
+  ## Articles list
+  - Implemented list page with Angular Material table
+  - Fetches data from backend via ArticlesService
+  ## Create article
+  - Reactive form with Material inputs and selects
 
 ## These are stubs only In later commits we will
 - Add Articles pages with create edit
@@ -60,7 +60,6 @@ src/app
 
 ## Running unit tests
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
 ```bash
 ng test
 ```

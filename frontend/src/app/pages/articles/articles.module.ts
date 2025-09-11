@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../../shared/material.module';
 
@@ -17,6 +18,7 @@ import { ArticlesRoutingModule } from './articles-routing.module';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MaterialModule,
     RouterModule,
     ArticlesRoutingModule
