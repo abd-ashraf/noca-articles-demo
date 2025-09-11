@@ -48,8 +48,12 @@ src/app
 ## Feature modules
 - ArticlesModule is lazy loaded under /articles
 
+## Articles list
+- Implemented list page with Angular Material table
+- Fetches data from backend via ArticlesService
+
 ## These are stubs only In later commits we will
-- Add Articles pages list create edit
+- Add Articles pages with create edit
 - Implement filtering UI with Material form controls
 - Implement ArticlesService for API calls
 - Implement pagination and sorting when backend supports it

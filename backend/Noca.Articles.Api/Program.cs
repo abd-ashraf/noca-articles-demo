@@ -19,6 +19,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // ------------------------
 
+// --- CORS ---
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AngularApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+// -------------
+
 var app = builder.Build();
 
 // --- Swagger middleware ---
@@ -29,6 +41,10 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = "swagger";
 });
 // -------------------------
+
+// --- Enable CORS ---
+app.UseCors("AngularApp");
+// -------------------
 
 // Simple health check endpoint
 app.MapGet("/ping", () => Results.Ok("Noca.Articles.Api is running..."));

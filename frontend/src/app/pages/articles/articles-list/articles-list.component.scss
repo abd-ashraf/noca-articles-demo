@@ -1,2 +1,12 @@
-.spacer { flex: 1 1 auto; }
-.content { padding: 16px; }
+.spacer {
+    flex: 1 1 auto;
+}
+
+.content {
+    padding: 16px;
+}
+
+.loading-spinner {
+    margin: 40px auto;
+    display: block;
+}
