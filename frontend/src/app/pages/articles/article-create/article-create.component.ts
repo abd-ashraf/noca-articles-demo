@@ -20,9 +20,9 @@ export class ArticleCreateComponent {
   submitting = false;
   serverErrors: string[] = [];
 
-  articleCategories = ['Frame', 'Wheel', 'Brake', 'Drivetrain'];
-  bicycleCategories = ['Road', 'Mountain', 'Hybrid', 'BMX', 'Kids'];
-  materials = ['Aluminum', 'Steel', 'Carbon', 'Titanium'];
+  articleCategories = ['Hub', 'Crank arm'];
+  bicycleCategories = ['e-Cargo bike', 'Road', 'Gravel', 'e-Gravel', 'e-Trekking', 'e-City', 'e-Trekking', 'Foldable'];
+  materials = ['Aluminium', 'Steel', 'Alloy', 'Carbon', 'Nickel'];
 
   form = this.fb.nonNullable.group({
     articleNumber: ['', Validators.required],

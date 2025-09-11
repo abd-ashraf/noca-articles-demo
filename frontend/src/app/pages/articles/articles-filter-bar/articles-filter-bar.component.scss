@@ -1,0 +1,11 @@
+.filter-bar {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.search {
+    flex: 1 1 200px;
+}
