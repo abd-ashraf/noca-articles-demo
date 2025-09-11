@@ -40,6 +40,14 @@ src/app
 - Uses RestService internally
 - Provides methods list getById create update delete
 
+## Routes
+- /articles list page
+- /articles/new create page
+- /articles/:id/edit edit page
+
+## Feature modules
+- ArticlesModule is lazy loaded under /articles
+
 ## These are stubs only In later commits we will
 - Add Articles pages list create edit
 - Implement filtering UI with Material form controls

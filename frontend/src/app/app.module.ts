@@ -4,7 +4,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './shared/material/material.module';
+import { MaterialModule } from './shared/material.module';
 import { errorInterceptor } from './core/error.interceptor';
 
 
